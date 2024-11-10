@@ -11,8 +11,15 @@ func main() {
 	var expectedReturnRate float64 = 5.5
 	var years float64 = 10
 
+	fmt.Print("Investment Amount: ")
 	fmt.Scan(&investmentAmount) //take input from terminal and put it in investmentAnount variable.
 
+	fmt.Print("Years: ")
+	fmt.Scan(&years)
+
+	fmt.Print("Expected return rate: ")
+	fmt.Scan(&expectedReturnRate)
+	
 	//Shortcut that can be used to declare and assign a varible, where
 	//the type is okay to be infered by go. NOTE: We can leverage this syntax
 	//when we explicitly provide type for a variable, in such case we'll have to
