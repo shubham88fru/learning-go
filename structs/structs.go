@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -12,30 +13,56 @@ type user struct {
 	createdAt time.Time
 }
 
+//attach this method to the user struct.
+//pass by value
+func (u user) outputUserDetails() {
+	fmt.Println(u.firstName, u.lastName, u.birthDate)
+}
+
+//pass by ref.
+func (u *user) clearUserName() {
+	u.firstName = ""
+	u.lastName = ""
+}
+
+//constructor pattern
+func newUser(firstName, lastName, birthDate string) (*user, error) {
+	if firstName == "" || lastName == "" || birthDate == ""  {
+		return nil, errors.New("FirstName, last name and birth date are all required")
+	}
+
+	return &(user {
+		firstName: firstName,
+		lastName: lastName,
+		birthDate: birthDate,
+		createdAt: time.Now(),
+	}), nil
+}
+
 func main() {
 	firstName := getUserData("Please enter your first name: ")
 	lastName := getUserData("Please enter your last name: ")
 	birthDate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	var appUser user
-	appUser = user {
-		firstName: firstName,
-		lastName: lastName,
-		birthDate: birthDate,
-		createdAt: time.Now(),
+	var appUser *user
+	appUser, err := newUser(firstName, lastName, birthDate)
+	
+	if err != nil {
+		fmt.Print(err)
+		return
 	}
 
-	outputUserDetails(appUser)
+	appUser.outputUserDetails()
+	appUser.clearUserName()
+	appUser.outputUserDetails()
+
 }
 
-func outputUserDetails(u user) {
-	fmt.Println(u.firstName, u.lastName, u.birthDate)
-}
 
 func getUserData(promptText string) string {
 	fmt.Print(promptText)
 	var value string
-	fmt.Scan(&value)
+	fmt.Scanln(&value)
 
 	return value
 }
