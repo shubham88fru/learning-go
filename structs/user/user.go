@@ -13,6 +13,13 @@ type User struct {
 	createdAt time.Time
 }
 
+//struct embedding - kinda inheritance.
+type Admin struct {
+	email string
+	password string
+	user User
+}
+
 //attach this method to the user struct.
 //pass by value
 func (u User) OutputUserDetails() {
@@ -23,6 +30,19 @@ func (u User) OutputUserDetails() {
 func (u *User) ClearUserName() {
 	u.firstName = ""
 	u.lastName = ""
+}
+
+func NewAdmin(email, password string) Admin {
+	return Admin {
+		email: email,
+		password: password,
+		user: User {
+			firstName: "ADMIN",
+			lastName: "ADMIN",
+			birthDate: "----",
+			createdAt: time.Now(),
+		},
+	}
 }
 
 //constructor pattern
