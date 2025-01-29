@@ -1,0 +1,51 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Output directories
+/bin/
+/build/
+/dist/
+
+# Dependency directories (if using vendoring)
+vendor/
+
+# Logs and debug output
+*.log
+
+# Go workspace file (if using modules)
+go.work
+go.work.sum
+
+# Module files
+go.sum
+
+# Compiled object files
+*.o
+*.a
+*.out
+
+# Test binary
+*.test
+
+# Coverage files
+coverage.out
+
+# IDE / Editor-specific
+.vscode/
+.idea
+.DS_Store
+*.swp
+*.swo
+
+# GoLand project files
+/.idea
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
