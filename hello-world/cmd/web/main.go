@@ -1,6 +1,7 @@
 package main
 
 import (
+	"myapp/pkg/handlers"
 	"net/http"
 )
 
@@ -12,8 +13,8 @@ func main() {
 	// 	w.Write([]byte("Hello, World!"))
 	// })
 
-	http.HandleFunc("/", Home)
-	http.HandleFunc("/about", About)
+	http.HandleFunc("/", handlers.Home)
+	http.HandleFunc("/about", handlers.About)
 
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
