@@ -22,4 +22,9 @@ func main() {
 	oneDayLater := t.Add(time.Hour * 24)
 	fmt.Println(oneDayLater)
 	fmt.Println(oneDayLater.Weekday())
+
+	// timezone conversion
+	loc, _ := time.LoadLocation("America/New_York") // Load the New York timezone
+	newYorkTime := time.Now().In(loc)
+	fmt.Println("New York Time: ", newYorkTime)
 }
