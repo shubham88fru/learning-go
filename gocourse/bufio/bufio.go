@@ -65,4 +65,5 @@ func main() {
 		fmt.Println("Error flushing writer: ", err)
 		return
 	}
+	fmt.Println("Data written successfully using bufio package.")
 }
